@@ -7,7 +7,7 @@ pipeline {
 
   environment {
     APP_NAME = 'flask-demo'
-    REGISTRY = 'localhost:8083'
+    REGISTRY = 'nexus:8083'
     IMAGE_REPOSITORY = "${REGISTRY}/demo/${APP_NAME}"
     IMAGE_TAG = "${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
     GITOPS_REPO_URL = 'git@github.com:pouyaarjomandi/gitops.git'
