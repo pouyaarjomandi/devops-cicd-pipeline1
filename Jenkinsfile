@@ -74,27 +74,27 @@ pipeline {
       }
       steps {
         withCredentials([sshUserPrivateKey(credentialsId: 'gitops-ssh-key', keyFileVariable: 'SSH_KEY')]) {
-          sh '''
+          sh """
             rm -rf gitops-workdir
-            GIT_SSH_COMMAND="ssh -i $SSH_KEY -o StrictHostKeyChecking=no" git clone --branch ${GITOPS_BRANCH} ${GITOPS_REPO_URL} gitops-workdir
+            GIT_SSH_COMMAND="ssh -i \$SSH_KEY -o StrictHostKeyChecking=no" git clone --branch ${GITOPS_BRANCH} ${GITOPS_REPO_URL} gitops-workdir
 
-            if [ "${BRANCH_NAME}" = "develop" ]; then
+            if [ "\${BRANCH_NAME}" = "develop" ]; then
               TARGET_FILE="gitops-workdir/apps/dev/values.yaml"
-            elif [ "${BRANCH_NAME}" = "staging" ]; then
+            elif [ "\${BRANCH_NAME}" = "staging" ]; then
               TARGET_FILE="gitops-workdir/apps/staging/values.yaml"
             else
               TARGET_FILE="gitops-workdir/apps/prod/values.yaml"
             fi
 
-            sed -i "s|^  tag: .*|  tag: ${IMAGE_TAG}|" "$TARGET_FILE"
+            sed -i "s|^  tag: .*|  tag: ${IMAGE_TAG}|" "\$TARGET_FILE"
 
             cd gitops-workdir
             git config user.name "Jenkins CI"
             git config user.email "jenkins@example.local"
             git add .
             git commit -m "chore: promote ${APP_NAME} image to ${IMAGE_TAG}" || true
-            GIT_SSH_COMMAND="ssh -i $SSH_KEY -o StrictHostKeyChecking=no" git push origin ${GITOPS_BRANCH}
-          '''
+            GIT_SSH_COMMAND="ssh -i \$SSH_KEY -o StrictHostKeyChecking=no" git push origin ${GITOPS_BRANCH}
+          """
         }
       }
     }
