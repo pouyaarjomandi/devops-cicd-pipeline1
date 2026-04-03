@@ -101,9 +101,6 @@ pipeline {
   }
 
   post {
-    always {
-      cleanWs()
-    }
     success {
       slackSend channel: "${SLACK_CHANNEL}", color: 'good', message: "SUCCESS: ${JOB_NAME} #${BUILD_NUMBER} (${BRANCH_NAME}) pushed ${IMAGE_REPOSITORY}:${IMAGE_TAG}"
     }
@@ -112,6 +109,7 @@ pipeline {
     }
     cleanup {
       sh 'docker rmi ${IMAGE_REPOSITORY}:${IMAGE_TAG} || true'
+      cleanWs()
     }
   }
 }
