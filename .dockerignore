@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Dev/Test
+tests/
+requirements-dev.txt
+
+# CI/CD & Infrastructure
+Jenkinsfile
+infrastructures/
+.git/
+.gitignore
+
+# Misc
+*.md
+.env
+.env.*
