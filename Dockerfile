@@ -23,11 +23,12 @@ RUN chown -R appuser:appuser /app
 USER appuser
 
 ENV PORT=5000
-ENV FLASK_ENV=production
+ENV FLASK_DEBUG=0
+ENV GUNICORN_WORKERS=3
 
 EXPOSE ${PORT}
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
     CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:${PORT}/health')" || exit 1
 
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "3", "--timeout", "120", "app:app"]
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:${PORT} --workers ${GUNICORN_WORKERS} --timeout 120 app:app"]
