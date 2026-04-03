@@ -107,4 +107,4 @@ Jenkins · Docker · Kubernetes · ArgoCD · Helm · Nexus · Python · Flask ·
 
 ## Author
 
-**Pouya Arjmandiakram** — [GitHub](https://github.com/pouyaarjomandi)
+**Pouya Arjmandiakram** — [GitHub](https://github.com/pouyaarjomandi) · [LinkedIn](https://www.linkedin.com/in/pouya-arjomandi/)
