@@ -68,8 +68,8 @@ devops-cicd-pipeline/
 | `develop` | Development | `apps/dev/values.yaml` |
 | `staging` | Staging | `apps/staging/values.yaml` |
 | `main` | Production | `apps/prod/values.yaml` |
-
-## API Endpoints
+|
+| API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -100,6 +100,32 @@ source .venv/bin/activate
 pip install -r requirements-dev.txt
 pytest
 ```
+
+## Demo
+
+### Jenkins Pipeline — develop branch
+![Jenkins develop](docs/screenshots/01-jenkins-develop.png)
+
+### Jenkins Pipeline — staging branch
+![Jenkins staging](docs/screenshots/02-jenkins-staging.png)
+
+### Jenkins Pipeline — main branch
+![Jenkins main](docs/screenshots/03-jenkins-main.png)
+
+### Nexus Docker Registry
+![Nexus registry](docs/screenshots/04-nexus-registry.png)
+
+### ArgoCD — All Applications
+![ArgoCD apps](docs/screenshots/05-argocd-all-apps.png)
+
+### Kubernetes Pods
+![Kubernetes pods](docs/screenshots/06-kubernetes-pods.png)
+
+### API — Products Endpoint
+![API products](docs/screenshots/07-api-products.png)
+
+### API — Home Endpoint
+![API home](docs/screenshots/08-api-home.png)
 
 ## Tools & Technologies
 
